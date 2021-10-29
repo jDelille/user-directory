@@ -234,11 +234,11 @@ export const data = [
   },
   {
     id: 22,
-    name: { first: "Balls", last: "Deep" },
+    name: { first: "¯\_(ツ)_/¯", last: "ᓚᘏᗢ" },
     city: "Damaishan",
     country: "China",
-    employer: "Viva",
-    title: "Research Nurse",
+    employer: " ☜(ﾟヮﾟ☜)",
+    title: "Ma, ma, ma, ma",
     favoriteMovies: [
       "Kagi (Odd Obsession)",
       "Night and Fog (Nuit et brouillard)",

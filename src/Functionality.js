@@ -2,10 +2,14 @@
 import React, {useState} from 'react'
 import {data} from './data'
 
-console.log(data)
+// console.log(data)
 
 
 export default function Functionality(props) {
+
+    
+    
+  
 
     return (
         <div>
@@ -13,6 +17,8 @@ export default function Functionality(props) {
                 data
                 .filter(item => item.id === props.cardNumber)
                 .map(item => 
+
+                
                 <div key={item.id}>
                     <div className="user-id-number">
                         <h2 className="user-number">{item.id}/{data.length}</h2>
