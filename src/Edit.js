@@ -1,45 +1,44 @@
 import React, { Component } from 'react'
-import { data } from './data'
+import {data} from './data'
+import './Edit.css'
 
-export default function Edit(props) {
+
+export default function Edit({setEditing, card}) {
     
 
     return (
         <div className="content">
-                {data
-                .filter(item => item.id === props.cardNumber)
-                .map(item => 
-                    <div>
+                    <div className="form-content">
                         <form 
                         className="firstNameInput"
                         onSubmit={(e) => {
                             e.preventDefault()
-                            props.setEditing(false)}
+                            setEditing(false)}
                         }
                         >
-                            <label> First Name <input type="text" placeholder={item.name.first} onChange={(e) => data[item.id - 1].name.first = e.target.value} /></label>
-                            <label> Last Name <input type="text" placeholder={item.name.last} onChange={(e) => data[item.id - 1].name.last = e.target.value } /></label>
-                            <label> Location <input type='text' placeholder={item.location} onChange={(e) => data[item.id - 1].location = e.target.value } /></label>
-                            <label> Job Title <input type='text' placeholder={item.title} onChange={(e) => data[item.id - 1].title = e.target.value } /></label>
-                            <label> Employeer <input type='text' placeholder={item.employer} onChange={(e) => data[item.id - 1].employer = e.target.value } /></label>
+
+                            <label> First Name </label><input type="text" placeholder={card.name.first} onChange={(e) => data[card.id - 1].name.first = e.target.value} />
+                            <label> Last Name </label><input type="text" placeholder={card.name.last} onChange={(e) => data[card.id - 1].name.last = e.target.value } />
+                            <label> Location </label> <input type='text' placeholder={card.location} onChange={(e) => data[card.id - 1].location = e.target.value } />
+                            <label> Job Title </label><input type='text' placeholder={card.title} onChange={(e) => data[card.id - 1].title = e.target.value } />
+                            <label> Employeer </label><input type='text' placeholder={card.employer} onChange={(e) => data[card.id - 1].employer = e.target.value } />
 
                             <label> Add Favorites Movies </label>
-                            <ol>
-                                <input type="text" placeholder={item.favoriteMovies[0]} 
-                                onChange={(e) => data[item.id - 1].favoriteMovies[0] = e.target.value }
+                            <ol className='edit-ol'>
+                                <input type="text" placeholder={card.favoriteMovies[0]} 
+                                onChange={(e) => data[card.id - 1].favoriteMovies[0] = e.target.value }
                                 />
-                                <input type="text" placeholder={item.favoriteMovies[1]}
-                                onChange={(e) => data[item.id - 1].favoriteMovies[1] = e.target.value }
+                                <input type="text" placeholder={card.favoriteMovies[1]}
+                                onChange={(e) => data[card.id - 1].favoriteMovies[1] = e.target.value }
                                 />
-                                <input type="text" placeholder={item.favoriteMovies[2]} 
-                                onChange={(e) => data[item.id - 1].favoriteMovies[2] = e.target.value }
+                                <input type="text" placeholder={card.favoriteMovies[2]} 
+                                onChange={(e) => data[card.id - 1].favoriteMovies[2] = e.target.value }
                                 />
                             </ol>
 
-                        <button type="submit">Save</button>
+                        <button className="submit-edit-btn"type="submit">Save</button>
                     </form>
-                </div>,
-                )}      
+                </div>
         </div>
     )
 }

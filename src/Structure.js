@@ -14,25 +14,35 @@ const Structure = () => {
     // copy data array
     const [cards, setCards] = useState(data)
 
+    let cardsCopy = [...cards];
 
-    //stop counter going below 1 and above 25
-    if(cardNumber < data.length - data.length + 1) {
-        cardNumber = 1;
-    } else if(cardNumber > data.length) {
-        cardNumber = data.length;
-    }
+    console.log(cardsCopy)
 
-    
-
-    
     //DELETE CARD
     const deleteCard = () => {        
-        let cardsCopy = [...cards];
-        console.log(cardsCopy.splice(cardNumber, 1));
+        cardsCopy.splice(cardNumber, 1);
         setCards(cardsCopy)
-        console.log(cardsCopy)
+        if(cardNumber - 1 < 0) {
+            cardNumber = 0;
+        } else {
+            console.log('yolo')
+        }
     }
 
+   
+
+     //stop counter going below 1 and above 25
+    // if(cardNumber < cards.length - cards.length + 1) {
+    //     cardNumber = 1;
+    // } else if(cardNumber > cards.length) {
+    //     alert('stop')
+    // }
+
+    if(cardNumber < cards.length - cards.length + 1) {
+        cardNumber = 0;
+    } else if(cardNumber + 1 > cards.length) {
+        setCardNumber((prevCardNumber) => prevCardNumber - 1)
+    }
 
     return (
       <div className="App">
@@ -43,7 +53,7 @@ const Structure = () => {
             <div className="powder">
 
                 {/* toggle editing or card content  */}
-                {editing ? <Edit cardNumber={cardNumber} setEditing={setEditing} />  : <Functionality className="display" cardNumber={cardNumber} card={cards[cardNumber]}  /> }
+                {editing ? <Edit cardNumber={cardNumber} setEditing={setEditing} card={cards[cardNumber]} />  : <Functionality className="display" cardNumber={cardNumber} card={cards[cardNumber]} cards={cards} /> }
 
                 <div className="controls">
                     <h3
