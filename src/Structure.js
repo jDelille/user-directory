@@ -7,9 +7,12 @@ import Edit from './Edit';
 
 const Structure = () => {
 
-    //variables 
+    // card number
     let [cardNumber, setCardNumber] = useState(0);
+    // show editing form
     const [editing, setEditing] = useState(false)
+    // copy data array
+    const [cards, setCards] = useState(data)
 
 
     //stop counter going below 1 and above 25
@@ -21,18 +24,14 @@ const Structure = () => {
 
     
 
+    
     //DELETE CARD
-    function handleDelete() {
-        let currentIndex = cardNumber - 1;
-        
-        // console.log(data.splice(cardNumber, 1));
-        alert(`why do you hate ${data[currentIndex].name.first} ?`)
-        data.splice(currentIndex, 1)
-        console.log(currentIndex)
-        
+    const deleteCard = () => {        
+        let cardsCopy = [...cards];
+        console.log(cardsCopy.splice(cardNumber, 1));
+        setCards(cardsCopy)
+        console.log(cardsCopy)
     }
-
-    //EDIT CARD
 
 
     return (
@@ -43,24 +42,26 @@ const Structure = () => {
         <div className='container'>
             <div className="powder">
 
-                {editing ? <Edit cardNumber={cardNumber} setEditing={setEditing} />  : <Functionality className="display" cardNumber={cardNumber} /> }
+                {/* toggle editing or card content  */}
+                {editing ? <Edit cardNumber={cardNumber} setEditing={setEditing} />  : <Functionality className="display" cardNumber={cardNumber} card={cards[cardNumber]}  /> }
 
-
-                
                 <div className="controls">
                     <h3
                     className='previous'
                     onClick={() => setCardNumber(cardNumber-1)}
                     > <MdArrowBackIosNew /> Previous </h3>
                     <div className='control-btns'>
+                        {/* edit button */}
                         <button
                         className='edit-btn'
                         onClick={() => setEditing(true)}
                         >Edit</button>
+                        {/* delete button */}
                         <button
                         className="delete-btn"
-                        onClick={handleDelete}
+                        onClick={deleteCard}
                         >Delete</button>
+                        {/* new button */}
                         <button>New</button>
                     </div>
                     <h3 

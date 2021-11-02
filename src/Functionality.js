@@ -5,41 +5,34 @@ import {data} from './data'
 // console.log(data)
 
 
-export default function Functionality(props) {
+export default function Functionality({ card }) {
+
+    console.log(card)
 
     
     
   
 
     return (
-        <div>
-            {
-                data
-                .filter(item => item.id === props.cardNumber)
-                .map(item => 
-
-                
-                <div key={item.id}>
+        <div>          
+                <div key={card.id}>
                     <div className="user-id-number">
-                        <h2 className="user-number">{item.id}/{data.length}</h2>
+                        <h2 className="user-number">{card.id}/{data.length}</h2>
                     </div>
                     <div className="content">
-                        <h1 className="name">{item.name.first} {item.name.last}</h1>
-                        <h3 className="location">From: <span>{item.city}, {item.country}</span> </h3>
-                        <h3 className="job">Job Title: <span>{item.title}</span> </h3>
-                        <h3 className="employeer">Employer: <span>{item.employer}</span> </h3>
+                        <h1 className="name">{card.name.first} {card.name.last}</h1>
+                        <h3 className="location">From: <span>{card.city}, {card.country}</span> </h3>
+                        <h3 className="job">Job Title: <span>{card.title}</span> </h3>
+                        <h3 className="employeer">Employer: <span>{card.employer}</span> </h3>
                         <br/>
                         <h3>Favorite Movies:</h3>
                         <ol>
-                            <li> {item.favoriteMovies[0]}</li>
-                            <li> {item.favoriteMovies[1]}</li>
-                            <li> {item.favoriteMovies[2]}</li>
+                            <li> {card.favoriteMovies[0]}</li>
+                            <li> {card.favoriteMovies[1]}</li>
+                            <li> {card.favoriteMovies[2]}</li>
                         </ol>
                     </div>
-                </div>,
-                
-                )
-            }
+                </div>
         </div>
     )
 }
